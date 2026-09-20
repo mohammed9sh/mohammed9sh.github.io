@@ -123,6 +123,21 @@
     header.nav{flex-direction:column; align-items:flex-start; gap:12px;}
     header.nav nav a{margin-left:0; margin-right:20px;}
   }
+
+  .mini-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .mini-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:12px;
+    padding:22px; display:flex; flex-direction:column;
+  }
+  .mini-card h3{margin:0 0 8px; font-size:1.05rem;}
+  .mini-card p{color:var(--gray); font-size:.88rem; margin:0 0 16px; flex-grow:1;}
+  .mini-card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .mini-card .tags span{
+    font-size:.72rem; color:var(--gray-dim); border:1px solid var(--card-border);
+    border-radius:999px; padding:3px 10px;
+  }
+  .mini-card a{color:var(--accent); text-decoration:none; font-weight:600; font-size:.88rem;}
+  .mini-card a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -132,6 +147,7 @@
   <nav>
     <a href="#work">What I Build</a>
     <a href="#academy">Academy</a>
+    <a href="#projects">Projects</a>
     <a href="#background">Background</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -202,6 +218,37 @@
           <div><span class="num">25,760</span><span class="lbl">XP</span></div>
         </div>
         <a class="btn btn-primary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Other Projects</h2>
+    <p class="section-intro">Engineering work from my thesis and graduation projects — sensor fusion, classical computer vision, and deep learning.</p>
+    <div class="mini-grid">
+      <div class="mini-card">
+        <h3>Smart Waste Sorting Bin</h3>
+        <p>B.Sc. graduation project: sorts household waste into metal, glass, paper, and plastic using a sensor-fusion method (camera + ultrasonic + load cell) instead of an expensive material sensor. Manufacturing-ready design — full SolidWorks CAD, dimensioned technical drawings, tested hardware, Arduino + Raspberry Pi code.</p>
+        <div class="tags"><span>SolidWorks</span><span>OpenCV</span><span>Arduino</span><span>Sensor Fusion</span></div>
+        <a href="https://github.com/mohammed9sh/smart-waste-sorting-bin">View on GitHub →</a>
+      </div>
+      <div class="mini-card">
+        <h3>BCCD Blood Cell Detection</h3>
+        <p>A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets in microscope images — HSV color segmentation, morphology, and watershed segmentation, no deep learning.</p>
+        <div class="tags"><span>MATLAB</span><span>Classical CV</span><span>Watershed</span></div>
+        <a href="https://github.com/mohammed9sh/bccd-blood-cell-detection">View on GitHub →</a>
+      </div>
+      <div class="mini-card">
+        <h3>WCE Capsule Image Classification</h3>
+        <p>M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, reaching 95.75% accuracy on EfficientNet through data augmentation, ensembling, and hyperparameter tuning. Published at the AVRASYA 10th International Conference on Applied Sciences.</p>
+        <div class="tags"><span>EfficientNet</span><span>Deep Learning</span><span>Published</span></div>
+        <a href="https://github.com/mohammed9sh/wce-image-classification-thesis">View on GitHub →</a>
+      </div>
+      <div class="mini-card">
+        <h3>Entropy-Regularized SE Channel Attention</h3>
+        <p>An entropy-regularization approach to Squeeze-and-Excitation channel attention for CNNs, implemented and evaluated in a single reproducible notebook.</p>
+        <div class="tags"><span>PyTorch</span><span>Attention</span><span>CNN</span></div>
+        <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention">View on GitHub →</a>
       </div>
     </div>
   </section>
