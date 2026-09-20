@@ -167,6 +167,7 @@
 <header class="nav">
   <a class="brand" href="#top">Mohamed Alshaikh</a>
   <nav>
+    <a href="#about">About</a>
     <a href="#work">What I Build</a>
     <a href="#research">Research</a>
     <a href="#projects">Projects</a>
@@ -189,6 +190,21 @@
       <a class="btn btn-primary" href="#projects">View my projects ↓</a>
       <a class="btn btn-secondary" href="mailto:mohammed.1998sh@gmail.com">Email me</a>
       <a class="btn btn-secondary" href="https://github.com/mohammed9sh">GitHub</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="research-box">
+      <p style="margin:0; color:var(--white); font-size:1.02rem;">
+        Mechatronics PhD student focused on deep learning and computer vision, with an engineering
+        foundation in robotics, sensing, embedded platforms, and physical-system design. Experienced
+        in developing and evaluating deep learning models for image classification, conducting
+        experimental research, analyzing datasets, and communicating technical concepts. My academic
+        background combines deep learning research with hands-on engineering projects involving
+        computer vision, sensors, Arduino, Raspberry Pi, and mechanical design — with a particular
+        interest in applications where intelligent computation interacts with real-world engineering
+        systems.
+      </p>
     </div>
   </section>
 
@@ -227,9 +243,10 @@
     <h2>Research Focus</h2>
     <p class="section-intro">The trajectory from my Master's work to my current PhD research.</p>
     <div class="research-box">
-      <p>My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. That work surfaced an observation that shapes my PhD direction: strong overall accuracy can still hide substantial differences in how well a model performs on individual classes.</p>
-      <p class="q">My PhD research question: how can CNN-based models be structured to achieve more consistent performance across classes while maintaining trustworthy, reliable predictions — especially under limited-data conditions?</p>
-      <p>I'm investigating this through model and representation structure — attention mechanisms and learned representations as intervention points — with information-theoretic principles (entropy and related measures) as one candidate mechanism. The <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" style="color:var(--accent);">entropy-regularized channel-attention work</a> below is an initial investigation of that direction, not the whole of it — the broader question stays open to other architectural and uncertainty-aware approaches as the research develops.</p>
+      <p>My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. A key outcome of that work: aggregate accuracy alone doesn't fully describe model behavior — a model can score well overall while performing very unevenly across individual classes.</p>
+      <p class="q">Central PhD research question: how can deep learning models, particularly CNN-based architectures, be structured and designed to achieve more consistent performance across classes while maintaining trustworthy and reliable predictions, especially under limited-data conditions?</p>
+      <p>This has two main dimensions: class-wise performance consistency (reducing disparities in per-class accuracy rather than relying on aggregate metrics), and trustworthy predictive performance (confidence, uncertainty, calibration, robustness, and knowing when a model may be unreliable). I'm examining how architectural components and learned representations — attention mechanisms and feature representations in particular — can be structured to support both.</p>
+      <p>Information-theoretic methods aren't the starting point of this problem; they're one potential methodological direction for addressing it. The <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" style="color:var(--accent);">entropy-regularized channel-attention work</a> is an initial investigation of that direction — the broader question stays independent of any single method, open to other architectural, uncertainty-aware, or representation-learning approaches as the research develops.</p>
     </div>
   </section>
 
@@ -255,7 +272,7 @@
     <div class="mini-grid">
       <div class="mini-card">
         <h3>Entropy-Regularized SE Channel Attention</h3>
-        <p>My current PhD-research direction in progress: an entropy-regularization approach to Squeeze-and-Excitation channel attention, aimed at more consistent, trustworthy class-wise performance in CNNs.</p>
+        <p>An initial investigation into information-theoretic (entropy-based) channel attention — one candidate mechanism for the class-consistency and trustworthiness question at the center of my PhD research, not the whole of it.</p>
         <div class="tags"><span>PyTorch</span><span>Attention</span><span>PhD Research</span></div>
         <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention">View on GitHub →</a>
       </div>
@@ -296,13 +313,39 @@
     </div>
   </section>
 
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="when">Aug 2022 – Nov 2025</p>
+        <h3>Robotics Trainer (Part-Time) — Khosrow Pasha Platform for Digital Education / MindUp Academy</h3>
+        <p>Taught robotics, Arduino programming, and engineering fundamentals. Developed curricula, training materials, and practical learning activities; delivered technical education remotely to students with different technical backgrounds.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when">May 2021 – May 2025</p>
+        <h3>Coordinator &amp; Export Specialist — Jazeera Company, Gaziantep</h3>
+        <p>Coordinated projects involving clients, suppliers, and project partners across Türkiye and the Middle East. Managed project communication, documentation, and progress reporting; supported technical equipment, infrastructure, and logistics projects.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when">Jul 2020 – Jan 2021</p>
+        <h3>3D Design &amp; Printing Trainee — SOFBIT Company, Gaziantep</h3>
+        <p>Contributed to feasibility research for personalized prosthetic solutions; assisted with engineering design and 3D-printing prototyping activities.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when">Aug 2019 – Sep 2019</p>
+        <h3>Automation System Intern — Merkon Otomasyon, Adana</h3>
+        <p>Participated in industrial automation projects alongside engineers and technicians.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="academy">
     <h2>Engineering Academy</h2>
     <div class="academy-box">
       <div class="text">
         <h3>A self-built study roadmap</h3>
-        <p>An interactive learning platform I built for myself to structure my own study of AI, computer vision, and robotics — most of it is still a work in progress. I'm sharing it as open source in case the roadmap is useful to anyone following a similar path.</p>
-        <p class="stats">8 sections · 94 units · 34 assignments</p>
+        <p>Built to work toward a long-term engineering identity and roadmap I've set for myself — most of it is still a work in progress. Shared as open source in case it's useful to anyone on a similar path.</p>
+        <p class="stats">8 sections · 94 units · 34 assignments · <a href="documents/Mohamed_Alshaikh_Engineering_Identity.pdf" style="color:var(--accent);">the roadmap, as a PDF ↓</a></p>
       </div>
       <a class="btn btn-secondary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
     </div>
@@ -326,6 +369,25 @@
     </div>
   </section>
 
+</div>
+
+<div class="wrap">
+  <section id="documents">
+    <h2>Documents</h2>
+    <p class="section-intro">CV and research profile, available as direct downloads.</p>
+    <div class="mini-grid">
+      <div class="mini-card">
+        <h3>CV</h3>
+        <p>Education, projects, technical skills, and professional experience.</p>
+        <a href="documents/Mohamed_Alshaikh_CV.pdf">Download PDF ↓</a>
+      </div>
+      <div class="mini-card">
+        <h3>Academic Research Profile</h3>
+        <p>M.Sc. → PhD research trajectory, the central research question, and the reasoning behind my current research direction.</p>
+        <a href="documents/Mohamed_Alshaikh_Research_Profile.pdf">Download PDF ↓</a>
+      </div>
+    </div>
+  </section>
 </div>
 
 <footer id="contact">
