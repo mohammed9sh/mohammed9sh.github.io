@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Alshaikh — Applied AI &amp; Robotics R&amp;D</title>
+<meta name="description" content="Mechatronics PhD student building intelligent physical systems with trustworthy AI — deep learning, computer vision, and robotics.">
+<meta name="theme-color" content="#0d121c">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mohamed Alshaikh — Applied AI & Robotics R&D">
+<meta property="og:description" content="Mechatronics PhD student building intelligent physical systems with trustworthy AI — deep learning, computer vision, and robotics.">
+<meta property="og:image" content="https://mohammed9sh.github.io/assets/hub-og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mohamed Alshaikh — Applied AI & Robotics R&D">
+<meta name="twitter:description" content="Mechatronics PhD student building intelligent physical systems with trustworthy AI.">
+<meta name="twitter:image" content="https://mohammed9sh.github.io/assets/hub-og-image.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<style>
+  :root{
+    --bg-top:#0d121c; --bg-bottom:#141b29; --grid:#1c2432;
+    --accent:#5ec5d6; --accent-dim:#386e7a;
+    --white:#f0f4f8; --gray:#96a2b0; --gray-dim:#69747f;
+    --card:#111827; --card-border:#232c3d;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom)); color:var(--white);
+    line-height:1.6;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--maxw); margin:0 auto; padding:28px 24px;
+  }
+  header.nav .brand{font-weight:700; letter-spacing:.02em; color:var(--white); text-decoration:none;}
+  header.nav nav a{color:var(--gray); text-decoration:none; margin-left:28px; font-size:.95rem;}
+  header.nav nav a:hover{color:var(--accent);}
+
+  section{padding:64px 0;}
+  .eyebrow{
+    color:var(--accent); font-weight:700; letter-spacing:.08em; font-size:.85rem;
+    text-transform:uppercase; margin:0 0 14px;
+  }
+  h1{font-size:3rem; line-height:1.1; margin:0 0 18px;}
+  .hero p.lead{font-size:1.2rem; color:var(--gray); max-width:640px; margin:0 0 32px;}
+
+  .cta-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .btn{
+    display:inline-block; padding:13px 22px; border-radius:8px; text-decoration:none;
+    font-weight:600; font-size:.95rem; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--accent); color:#06232a;}
+  .btn-primary:hover{background:#7ad3e2;}
+  .btn-secondary{border-color:var(--card-border); color:var(--white);}
+  .btn-secondary:hover{border-color:var(--accent); color:var(--accent);}
+
+  h2{font-size:1.7rem; margin:0 0 8px;}
+  .section-intro{color:var(--gray); margin:0 0 32px; max-width:640px;}
+
+  .pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px;}
+  .pillar{
+    background:var(--card); border:1px solid var(--card-border); border-radius:12px;
+    padding:20px;
+  }
+  .pillar .tag{color:var(--accent); font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;}
+  .pillar p{margin:8px 0 0; color:var(--gray); font-size:.92rem;}
+  .specialization{
+    margin-top:16px; padding:16px 20px; border-radius:12px;
+    border:1px dashed var(--accent-dim); color:var(--gray);
+  }
+  .specialization strong{color:var(--accent);}
+
+  .project-card{
+    display:grid; grid-template-columns:1fr; gap:0; background:var(--card);
+    border:1px solid var(--card-border); border-radius:14px; overflow:hidden;
+  }
+  .project-card img{width:100%; display:block; border-bottom:1px solid var(--card-border);}
+  .project-card .body{padding:28px;}
+  .project-card h3{margin:0 0 10px; font-size:1.4rem;}
+  .project-card p{color:var(--gray); margin:0 0 20px;}
+  .stat-row{display:flex; gap:28px; flex-wrap:wrap; margin-bottom:22px;}
+  .stat-row div{display:flex; flex-direction:column;}
+  .stat-row .num{color:var(--accent); font-weight:700; font-size:1.3rem;}
+  .stat-row .lbl{color:var(--gray-dim); font-size:.8rem;}
+
+  .timeline{border-left:2px solid var(--card-border); padding-left:24px;}
+  .timeline-item{margin-bottom:28px; position:relative;}
+  .timeline-item::before{
+    content:""; position:absolute; left:-30px; top:6px; width:10px; height:10px;
+    border-radius:50%; background:var(--accent);
+  }
+  .timeline-item .when{color:var(--accent); font-size:.85rem; font-weight:600;}
+  .timeline-item h3{margin:4px 0 6px; font-size:1.1rem;}
+  .timeline-item p{margin:0; color:var(--gray); font-size:.95rem;}
+
+  .chips{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    border:1px solid var(--card-border); border-radius:999px; padding:8px 16px;
+    color:var(--gray); font-size:.88rem;
+  }
+
+  footer{border-top:1px solid var(--card-border); padding:48px 0 64px;}
+  footer p.tagline{color:var(--gray); max-width:600px; margin:0 0 24px;}
+  footer .contact-row{display:flex; flex-wrap:wrap; gap:24px; margin-bottom:20px;}
+  footer .contact-row a{color:var(--white); text-decoration:none; font-weight:600;}
+  footer .contact-row a:hover{color:var(--accent);}
+  footer .fine{color:var(--gray-dim); font-size:.85rem;}
+
+  @media (max-width:600px){
+    h1{font-size:2.2rem;}
+    header.nav{flex-direction:column; align-items:flex-start; gap:12px;}
+    header.nav nav a{margin-left:0; margin-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top">Mohamed Alshaikh</a>
+  <nav>
+    <a href="#work">What I Build</a>
+    <a href="#academy">Academy</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <p class="eyebrow">Applied AI &amp; Robotics R&amp;D</p>
+    <h1>Mohamed Alshaikh</h1>
+    <p class="lead">
+      Mechatronics PhD student building intelligent systems that solve real-world engineering
+      problems — combining AI, computer vision, robotics, and trustworthy machine learning.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://mohammed9sh.github.io/academy/">View the Engineering Academy →</a>
+      <a class="btn btn-secondary" href="mailto:mohammed.1998sh@gmail.com">Email me</a>
+      <a class="btn btn-secondary" href="https://github.com/mohammed9sh">GitHub</a>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2>What I Build</h2>
+    <p class="section-intro">
+      My professional center is Applied AI &amp; Robotics R&amp;D, aimed at intelligent physical
+      systems — where AI, sensing, and robotics meet the real world.
+    </p>
+    <div class="pillars">
+      <div class="pillar">
+        <p class="tag">Pillar</p>
+        <p style="font-weight:600; margin:2px 0 0;">AI / Machine Learning / Deep Learning</p>
+      </div>
+      <div class="pillar">
+        <p class="tag">Pillar</p>
+        <p style="font-weight:600; margin:2px 0 0;">Computer Vision</p>
+      </div>
+      <div class="pillar">
+        <p class="tag">Pillar</p>
+        <p style="font-weight:600; margin:2px 0 0;">Robotics &amp; Physical Systems</p>
+      </div>
+      <div class="pillar">
+        <p class="tag">Pillar</p>
+        <p style="font-weight:600; margin:2px 0 0;">Mathematics &amp; ML Foundations</p>
+      </div>
+    </div>
+    <div class="specialization">
+      <strong>Specialization:</strong> Trustworthy Machine Learning &amp; Deep Learning — currently
+      focused on trustworthy methods for computer vision and image classification, building toward
+      trustworthy perception, localization, and navigation for intelligent physical systems.
+    </div>
+  </section>
+
+  <section id="academy">
+    <h2>Featured Project</h2>
+    <p class="section-intro">A working example of how I like to build: documented, modular, and finished end to end.</p>
+    <div class="project-card">
+      <img src="assets/academy-preview.png" alt="Preview of Mohammed's Engineering Academy">
+      <div class="body">
+        <h3>Engineering Academy</h3>
+        <p>
+          An interactive, Brilliant-style learning platform covering my own AI, computer vision,
+          and robotics curriculum — built as a portfolio project that doubles as my actual study tool.
+        </p>
+        <div class="stat-row">
+          <div><span class="num">8</span><span class="lbl">Sections</span></div>
+          <div><span class="num">94</span><span class="lbl">Units</span></div>
+          <div><span class="num">34</span><span class="lbl">Assignments</span></div>
+          <div><span class="num">25,760</span><span class="lbl">XP</span></div>
+        </div>
+        <a class="btn btn-primary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <h2>Background</h2>
+    <p class="section-intro">Competence measured through evidence, not certificates — projects, research, and things that shipped.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="when">Sep 2025 – Present</p>
+        <h3>Ph.D. in Mechatronics Engineering — Erciyes University</h3>
+        <p>Research focus: machine learning &amp; deep learning foundations, computer vision — theoretical grounding plus applied methods for visual data.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when">Oct 2021 – Jul 2024</p>
+        <h3>M.Sc. in Mechatronics Engineering — Erciyes University</h3>
+        <p>Thesis: optimizing deep learning model performance for wireless capsule endoscopy image classification. Reached 95.75% classification accuracy via ensemble methods and hyperparameter tuning; published research on data augmentation for capsule-image classification with EfficientNet.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when">Sep 2016 – Aug 2020</p>
+        <h3>B.Sc. in Mechatronics Engineering — Düzce University</h3>
+        <p>Graduation project: a smart waste-sorting bin combining Arduino/Raspberry Pi sensing with OpenCV-based image processing and SolidWorks-designed mechanics. GPA 3.17/4.00, top 10 in department.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Tools &amp; Skills</h2>
+    <div class="chips">
+      <span class="chip">Python</span>
+      <span class="chip">C++</span>
+      <span class="chip">C</span>
+      <span class="chip">MATLAB</span>
+      <span class="chip">OpenCV</span>
+      <span class="chip">Arduino</span>
+      <span class="chip">Raspberry Pi</span>
+      <span class="chip">SolidWorks</span>
+      <span class="chip">Deep Learning</span>
+      <span class="chip">Computer Vision</span>
+      <span class="chip">Experimental Research</span>
+      <span class="chip">Technical Documentation</span>
+    </div>
+  </section>
+
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="tagline">
+      This site — and the Engineering Academy behind it — follow the same practice: build in the
+      open, document the reasoning, and let evidence speak instead of claims.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:mohammed.1998sh@gmail.com">mohammed.1998sh@gmail.com</a>
+      <a href="https://github.com/mohammed9sh">github.com/mohammed9sh</a>
+    </div>
+    <p class="fine">Kayseri, Türkiye · Arabic (native) · English (C1) · Turkish (C1)</p>
+  </div>
+</footer>
+
+</body>
+</html>
