@@ -43,12 +43,13 @@
   header.nav{
     display:flex; align-items:center; justify-content:space-between;
     max-width:var(--maxw); margin:0 auto; padding:28px 24px;
+    flex-wrap:wrap; gap:12px;
   }
   header.nav .brand{font-weight:700; letter-spacing:.02em; color:var(--white); text-decoration:none;}
-  header.nav nav a{color:var(--gray); text-decoration:none; margin-left:28px; font-size:.95rem;}
+  header.nav nav a{color:var(--gray); text-decoration:none; margin-left:22px; font-size:.9rem;}
   header.nav nav a:hover{color:var(--accent);}
 
-  section{padding:64px 0;}
+  section{padding:56px 0;}
   .eyebrow{
     color:var(--accent); font-weight:700; letter-spacing:.08em; font-size:.85rem;
     text-transform:uppercase; margin:0 0 14px;
@@ -65,6 +66,7 @@
   .btn-primary:hover{background:#7ad3e2;}
   .btn-secondary{border-color:var(--card-border); color:var(--white);}
   .btn-secondary:hover{border-color:var(--accent); color:var(--accent);}
+  .btn-sm{padding:9px 16px; font-size:.85rem;}
 
   h2{font-size:1.7rem; margin:0 0 8px;}
   .section-intro{color:var(--gray); margin:0 0 32px; max-width:640px;}
@@ -82,18 +84,52 @@
   }
   .specialization strong{color:var(--accent);}
 
+  .research-box{
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:28px;
+  }
+  .research-box p{color:var(--gray); margin:0 0 14px;}
+  .research-box p:last-child{margin-bottom:0;}
+  .research-box .q{color:var(--white); font-weight:600;}
+
   .project-card{
     display:grid; grid-template-columns:1fr; gap:0; background:var(--card);
     border:1px solid var(--card-border); border-radius:14px; overflow:hidden;
+    margin-bottom:20px;
   }
-  .project-card img{width:100%; display:block; border-bottom:1px solid var(--card-border);}
+  .project-card img{width:100%; height:260px; object-fit:cover; object-position:top; display:block; border-bottom:1px solid var(--card-border);}
   .project-card .body{padding:28px;}
   .project-card h3{margin:0 0 10px; font-size:1.4rem;}
   .project-card p{color:var(--gray); margin:0 0 20px;}
-  .stat-row{display:flex; gap:28px; flex-wrap:wrap; margin-bottom:22px;}
-  .stat-row div{display:flex; flex-direction:column;}
-  .stat-row .num{color:var(--accent); font-weight:700; font-size:1.3rem;}
-  .stat-row .lbl{color:var(--gray-dim); font-size:.8rem;}
+  .project-card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px;}
+  .project-card .tags span{
+    font-size:.75rem; color:var(--gray-dim); border:1px solid var(--card-border);
+    border-radius:999px; padding:3px 12px;
+  }
+
+  .mini-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;}
+  .mini-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:12px;
+    padding:22px; display:flex; flex-direction:column;
+  }
+  .mini-card h3{margin:0 0 8px; font-size:1.05rem;}
+  .mini-card p{color:var(--gray); font-size:.88rem; margin:0 0 16px; flex-grow:1;}
+  .mini-card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .mini-card .tags span{
+    font-size:.72rem; color:var(--gray-dim); border:1px solid var(--card-border);
+    border-radius:999px; padding:3px 10px;
+  }
+  .mini-card a{color:var(--accent); text-decoration:none; font-weight:600; font-size:.88rem;}
+  .mini-card a:hover{text-decoration:underline;}
+
+  .academy-box{
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:24px 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .academy-box .text{max-width:560px;}
+  .academy-box h3{margin:0 0 8px; font-size:1.15rem;}
+  .academy-box p{margin:0; color:var(--gray); font-size:.9rem;}
+  .academy-box .stats{color:var(--gray-dim); font-size:.78rem; margin-top:8px;}
 
   .timeline{border-left:2px solid var(--card-border); padding-left:24px;}
   .timeline-item{margin-bottom:28px; position:relative;}
@@ -122,22 +158,8 @@
     h1{font-size:2.2rem;}
     header.nav{flex-direction:column; align-items:flex-start; gap:12px;}
     header.nav nav a{margin-left:0; margin-right:20px;}
+    .academy-box{flex-direction:column; align-items:flex-start;}
   }
-
-  .mini-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
-  .mini-card{
-    background:var(--card); border:1px solid var(--card-border); border-radius:12px;
-    padding:22px; display:flex; flex-direction:column;
-  }
-  .mini-card h3{margin:0 0 8px; font-size:1.05rem;}
-  .mini-card p{color:var(--gray); font-size:.88rem; margin:0 0 16px; flex-grow:1;}
-  .mini-card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
-  .mini-card .tags span{
-    font-size:.72rem; color:var(--gray-dim); border:1px solid var(--card-border);
-    border-radius:999px; padding:3px 10px;
-  }
-  .mini-card a{color:var(--accent); text-decoration:none; font-weight:600; font-size:.88rem;}
-  .mini-card a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -146,9 +168,10 @@
   <a class="brand" href="#top">Mohamed Alshaikh</a>
   <nav>
     <a href="#work">What I Build</a>
-    <a href="#academy">Academy</a>
+    <a href="#research">Research</a>
     <a href="#projects">Projects</a>
     <a href="#background">Background</a>
+    <a href="#academy">Academy</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -163,7 +186,7 @@
       problems — combining AI, computer vision, robotics, and trustworthy machine learning.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://mohammed9sh.github.io/academy/">View the Engineering Academy →</a>
+      <a class="btn btn-primary" href="#projects">View my projects ↓</a>
       <a class="btn btn-secondary" href="mailto:mohammed.1998sh@gmail.com">Email me</a>
       <a class="btn btn-secondary" href="https://github.com/mohammed9sh">GitHub</a>
     </div>
@@ -200,55 +223,53 @@
     </div>
   </section>
 
-  <section id="academy">
-    <h2>Featured Project</h2>
-    <p class="section-intro">A working example of how I like to build: documented, modular, and finished end to end.</p>
-    <div class="project-card">
-      <img src="assets/academy-preview.png" alt="Preview of Mohammed's Engineering Academy">
-      <div class="body">
-        <h3>Engineering Academy</h3>
-        <p>
-          An interactive, Brilliant-style learning platform covering my own AI, computer vision,
-          and robotics curriculum — built as a portfolio project that doubles as my actual study tool.
-        </p>
-        <div class="stat-row">
-          <div><span class="num">8</span><span class="lbl">Sections</span></div>
-          <div><span class="num">94</span><span class="lbl">Units</span></div>
-          <div><span class="num">34</span><span class="lbl">Assignments</span></div>
-          <div><span class="num">25,760</span><span class="lbl">XP</span></div>
-        </div>
-        <a class="btn btn-primary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
-      </div>
+  <section id="research">
+    <h2>Research Focus</h2>
+    <p class="section-intro">The trajectory from my Master's work to my current PhD research.</p>
+    <div class="research-box">
+      <p>My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. That work surfaced an observation that shapes my PhD direction: strong overall accuracy can still hide substantial differences in how well a model performs on individual classes.</p>
+      <p class="q">My PhD research question: how can CNN-based models be structured to achieve more consistent performance across classes while maintaining trustworthy, reliable predictions — especially under limited-data conditions?</p>
+      <p>I'm investigating this through model and representation structure — attention mechanisms and learned representations as intervention points — with information-theoretic principles (entropy and related measures) as one candidate mechanism. The <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" style="color:var(--accent);">entropy-regularized channel-attention work</a> below is an initial investigation of that direction, not the whole of it — the broader question stays open to other architectural and uncertainty-aware approaches as the research develops.</p>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Other Projects</h2>
-    <p class="section-intro">Engineering work from my thesis and graduation projects — sensor fusion, classical computer vision, and deep learning.</p>
+    <h2>Projects</h2>
+    <p class="section-intro">Evidence over claims: engineering work from my graduation project, thesis, and current research.</p>
+
+    <div class="project-card">
+      <img src="assets/smart-waste-bin-render.jpg" alt="Smart Waste Sorting Bin — full assembly render and bill of materials">
+      <div class="body">
+        <h3>Smart Waste Sorting Bin</h3>
+        <p>
+          B.Sc. graduation project: sorts household waste into metal, glass, paper, and plastic
+          using a sensor-fusion method — camera + ultrasonic + load cell — instead of an expensive
+          material sensor. The design is manufacturing-ready: full SolidWorks CAD, a 34-part BOM,
+          dimensioned technical drawings, tested hardware, and Arduino + Raspberry Pi code.
+        </p>
+        <div class="tags"><span>SolidWorks</span><span>OpenCV</span><span>Arduino</span><span>Raspberry Pi</span><span>Sensor Fusion</span></div>
+        <a class="btn btn-primary btn-sm" href="https://github.com/mohammed9sh/smart-waste-sorting-bin">View on GitHub →</a>
+      </div>
+    </div>
+
     <div class="mini-grid">
       <div class="mini-card">
-        <h3>Smart Waste Sorting Bin</h3>
-        <p>B.Sc. graduation project: sorts household waste into metal, glass, paper, and plastic using a sensor-fusion method (camera + ultrasonic + load cell) instead of an expensive material sensor. Manufacturing-ready design — full SolidWorks CAD, dimensioned technical drawings, tested hardware, Arduino + Raspberry Pi code.</p>
-        <div class="tags"><span>SolidWorks</span><span>OpenCV</span><span>Arduino</span><span>Sensor Fusion</span></div>
-        <a href="https://github.com/mohammed9sh/smart-waste-sorting-bin">View on GitHub →</a>
-      </div>
-      <div class="mini-card">
-        <h3>BCCD Blood Cell Detection</h3>
-        <p>A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets in microscope images — HSV color segmentation, morphology, and watershed segmentation, no deep learning.</p>
-        <div class="tags"><span>MATLAB</span><span>Classical CV</span><span>Watershed</span></div>
-        <a href="https://github.com/mohammed9sh/bccd-blood-cell-detection">View on GitHub →</a>
+        <h3>Entropy-Regularized SE Channel Attention</h3>
+        <p>My current PhD-research direction in progress: an entropy-regularization approach to Squeeze-and-Excitation channel attention, aimed at more consistent, trustworthy class-wise performance in CNNs.</p>
+        <div class="tags"><span>PyTorch</span><span>Attention</span><span>PhD Research</span></div>
+        <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention">View on GitHub →</a>
       </div>
       <div class="mini-card">
         <h3>WCE Capsule Image Classification</h3>
-        <p>M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, reaching 95.75% accuracy on EfficientNet through data augmentation, ensembling, and hyperparameter tuning. Published at the AVRASYA 10th International Conference on Applied Sciences.</p>
+        <p>M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, 95.75% accuracy via EfficientNet, augmentation, and ensembling. Published at AVRASYA 10th Int'l Conference on Applied Sciences.</p>
         <div class="tags"><span>EfficientNet</span><span>Deep Learning</span><span>Published</span></div>
         <a href="https://github.com/mohammed9sh/wce-image-classification-thesis">View on GitHub →</a>
       </div>
       <div class="mini-card">
-        <h3>Entropy-Regularized SE Channel Attention</h3>
-        <p>An entropy-regularization approach to Squeeze-and-Excitation channel attention for CNNs, implemented and evaluated in a single reproducible notebook.</p>
-        <div class="tags"><span>PyTorch</span><span>Attention</span><span>CNN</span></div>
-        <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention">View on GitHub →</a>
+        <h3>BCCD Blood Cell Detection</h3>
+        <p>A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets — HSV color segmentation, morphology, and watershed segmentation, no deep learning.</p>
+        <div class="tags"><span>MATLAB</span><span>Classical CV</span><span>Watershed</span></div>
+        <a href="https://github.com/mohammed9sh/bccd-blood-cell-detection">View on GitHub →</a>
       </div>
     </div>
   </section>
@@ -275,6 +296,18 @@
     </div>
   </section>
 
+  <section id="academy">
+    <h2>Engineering Academy</h2>
+    <div class="academy-box">
+      <div class="text">
+        <h3>A self-built study roadmap</h3>
+        <p>An interactive learning platform I built for myself to structure my own study of AI, computer vision, and robotics — most of it is still a work in progress. I'm sharing it as open source in case the roadmap is useful to anyone following a similar path.</p>
+        <p class="stats">8 sections · 94 units · 34 assignments</p>
+      </div>
+      <a class="btn btn-secondary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
+    </div>
+  </section>
+
   <section id="skills">
     <h2>Tools &amp; Skills</h2>
     <div class="chips">
@@ -298,7 +331,7 @@
 <footer id="contact">
   <div class="wrap">
     <p class="tagline">
-      This site — and the Engineering Academy behind it — follow the same practice: build in the
+      This site — and the projects behind it — follow the same practice: build in the
       open, document the reasoning, and let evidence speak instead of claims.
     </p>
     <div class="contact-row">
