@@ -38,6 +38,7 @@
     background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom)); color:var(--white);
     line-height:1.6;
   }
+  body:lang(ar){ font-family:"Segoe UI",Tahoma,Geneva,Arial,sans-serif; line-height:1.9; }
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
 
   header.nav{
@@ -45,17 +46,31 @@
     max-width:var(--maxw); margin:0 auto; padding:28px 24px;
     flex-wrap:wrap; gap:12px;
   }
+  header.nav .navwrap{display:flex; align-items:center; flex-wrap:wrap; gap:18px;}
   header.nav .brand{font-weight:700; letter-spacing:.02em; color:var(--white); text-decoration:none;}
-  header.nav nav a{color:var(--gray); text-decoration:none; margin-left:22px; font-size:.9rem;}
+  :lang(ar) header.nav .brand{letter-spacing:0;}
+  header.nav nav a{color:var(--gray); text-decoration:none; margin-inline-start:22px; font-size:.9rem;}
+  header.nav nav a:first-child{margin-inline-start:0;}
   header.nav nav a:hover{color:var(--accent);}
+
+  .lang-switch{display:flex; gap:4px;}
+  .lang-switch button{
+    background:transparent; border:1px solid var(--card-border); color:var(--gray);
+    font-size:.75rem; font-weight:700; padding:5px 10px; border-radius:6px; cursor:pointer;
+    font-family:inherit; letter-spacing:.02em;
+  }
+  .lang-switch button:hover{border-color:var(--accent); color:var(--accent);}
+  .lang-switch button.active{background:var(--accent); border-color:var(--accent); color:#06232a;}
 
   section{padding:56px 0;}
   .eyebrow{
     color:var(--accent); font-weight:700; letter-spacing:.08em; font-size:.85rem;
     text-transform:uppercase; margin:0 0 14px;
   }
+  :lang(ar) .eyebrow{letter-spacing:0; text-transform:none;}
   h1{font-size:3rem; line-height:1.1; margin:0 0 18px;}
   .hero p.lead{font-size:1.2rem; color:var(--gray); max-width:640px; margin:0 0 32px;}
+  .hero .focus-row{font-size:.85rem; color:var(--gray-dim); max-width:640px; margin:-18px 0 28px;}
 
   .cta-row{display:flex; flex-wrap:wrap; gap:14px;}
   .btn{
@@ -70,19 +85,6 @@
 
   h2{font-size:1.7rem; margin:0 0 8px;}
   .section-intro{color:var(--gray); margin:0 0 32px; max-width:640px;}
-
-  .pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px;}
-  .pillar{
-    background:var(--card); border:1px solid var(--card-border); border-radius:12px;
-    padding:20px;
-  }
-  .pillar .tag{color:var(--accent); font-size:.8rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;}
-  .pillar p{margin:8px 0 0; color:var(--gray); font-size:.92rem;}
-  .specialization{
-    margin-top:16px; padding:16px 20px; border-radius:12px;
-    border:1px dashed var(--accent-dim); color:var(--gray);
-  }
-  .specialization strong{color:var(--accent);}
 
   .research-box{
     background:var(--card); border:1px solid var(--card-border); border-radius:14px;
@@ -131,10 +133,10 @@
   .academy-box p{margin:0; color:var(--gray); font-size:.9rem;}
   .academy-box .stats{color:var(--gray-dim); font-size:.78rem; margin-top:8px;}
 
-  .timeline{border-left:2px solid var(--card-border); padding-left:24px;}
+  .timeline{border-inline-start:2px solid var(--card-border); padding-inline-start:24px;}
   .timeline-item{margin-bottom:28px; position:relative;}
   .timeline-item::before{
-    content:""; position:absolute; left:-30px; top:6px; width:10px; height:10px;
+    content:""; position:absolute; inset-inline-start:-30px; top:6px; width:10px; height:10px;
     border-radius:50%; background:var(--accent);
   }
   .timeline-item .when{color:var(--accent); font-size:.85rem; font-weight:600;}
@@ -157,7 +159,8 @@
   @media (max-width:600px){
     h1{font-size:2.2rem;}
     header.nav{flex-direction:column; align-items:flex-start; gap:12px;}
-    header.nav nav a{margin-left:0; margin-right:20px;}
+    header.nav nav a{margin-inline-start:0; margin-inline-end:20px;}
+    header.nav nav a:first-child{margin-inline-end:20px;}
     .academy-box{flex-direction:column; align-items:flex-start;}
   }
 </style>
@@ -165,37 +168,46 @@
 <body>
 
 <header class="nav">
-  <a class="brand" href="#top">Mohamed Alshaikh</a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#work">What I Build</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#background">Background</a>
-    <a href="#academy">Academy</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <a class="brand" href="#top" data-i18n="nav.brand">Mohamed Alshaikh</a>
+  <div class="navwrap">
+    <nav>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#research" data-i18n="nav.research">Research</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#background" data-i18n="nav.background">Background</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#documents" data-i18n="nav.documents">Documents</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang-switch">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="tr">TR</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+  </div>
 </header>
 
 <div class="wrap">
 
   <section class="hero" id="top">
-    <p class="eyebrow">Applied AI &amp; Robotics R&amp;D</p>
-    <h1>Mohamed Alshaikh</h1>
-    <p class="lead">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Applied AI &amp; Robotics R&amp;D</p>
+    <h1 data-i18n="hero.h1">Mohamed Alshaikh</h1>
+    <p class="lead" data-i18n="hero.lead">
       Mechatronics PhD student building intelligent systems that solve real-world engineering
       problems — combining AI, computer vision, robotics, and trustworthy machine learning.
     </p>
+    <p class="focus-row" data-i18n="hero.focus">Focus areas: AI / ML / Deep Learning &middot; Computer Vision &middot; Robotics &amp; Physical Systems &middot; Math &amp; ML Foundations</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#projects">View my projects ↓</a>
-      <a class="btn btn-secondary" href="mailto:mohammed.1998sh@gmail.com">Email me</a>
-      <a class="btn btn-secondary" href="https://github.com/mohammed9sh">GitHub</a>
+      <a class="btn btn-primary" href="#projects" data-i18n="hero.cta_projects">View my projects ↓</a>
+      <a class="btn btn-secondary" href="mailto:mohammed.1998sh@gmail.com" data-i18n="hero.cta_email">Email me</a>
+      <a class="btn btn-secondary" href="https://github.com/mohammed9sh" data-i18n="hero.cta_github">GitHub</a>
     </div>
   </section>
 
   <section id="about">
     <div class="research-box">
-      <p style="margin:0; color:var(--white); font-size:1.02rem;">
+      <p style="margin:0; color:var(--white); font-size:1.02rem;" data-i18n="about.bio">
         Mechatronics PhD student focused on deep learning and computer vision, with an engineering
         foundation in robotics, sensing, embedded platforms, and physical-system design. Experienced
         in developing and evaluating deep learning models for image classification, conducting
@@ -208,151 +220,113 @@
     </div>
   </section>
 
-  <section id="work">
-    <h2>What I Build</h2>
-    <p class="section-intro">
-      My professional center is Applied AI &amp; Robotics R&amp;D, aimed at intelligent physical
-      systems — where AI, sensing, and robotics meet the real world.
-    </p>
-    <div class="pillars">
-      <div class="pillar">
-        <p class="tag">Pillar</p>
-        <p style="font-weight:600; margin:2px 0 0;">AI / Machine Learning / Deep Learning</p>
-      </div>
-      <div class="pillar">
-        <p class="tag">Pillar</p>
-        <p style="font-weight:600; margin:2px 0 0;">Computer Vision</p>
-      </div>
-      <div class="pillar">
-        <p class="tag">Pillar</p>
-        <p style="font-weight:600; margin:2px 0 0;">Robotics &amp; Physical Systems</p>
-      </div>
-      <div class="pillar">
-        <p class="tag">Pillar</p>
-        <p style="font-weight:600; margin:2px 0 0;">Mathematics &amp; ML Foundations</p>
-      </div>
-    </div>
-    <div class="specialization">
-      <strong>Specialization:</strong> Trustworthy Machine Learning &amp; Deep Learning — currently
-      focused on trustworthy methods for computer vision and image classification, building toward
-      trustworthy perception, localization, and navigation for intelligent physical systems.
-    </div>
-  </section>
-
   <section id="research">
-    <h2>Research Focus</h2>
-    <p class="section-intro">The trajectory from my Master's work to my current PhD research.</p>
+    <h2 data-i18n="research.h2">Research Focus</h2>
+    <p class="section-intro" data-i18n="research.intro">The trajectory from my Master's work to my current PhD research.</p>
     <div class="research-box">
-      <p>My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. A key outcome of that work: aggregate accuracy alone doesn't fully describe model behavior — a model can score well overall while performing very unevenly across individual classes.</p>
-      <p class="q">Central PhD research question: how can deep learning models, particularly CNN-based architectures, be structured and designed to achieve more consistent performance across classes while maintaining trustworthy and reliable predictions, especially under limited-data conditions?</p>
-      <p>This has two main dimensions: class-wise performance consistency (reducing disparities in per-class accuracy rather than relying on aggregate metrics), and trustworthy predictive performance (confidence, uncertainty, calibration, robustness, and knowing when a model may be unreliable). I'm examining how architectural components and learned representations — attention mechanisms and feature representations in particular — can be structured to support both.</p>
-      <p>Information-theoretic methods aren't the starting point of this problem; they're one potential methodological direction for addressing it. The <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" style="color:var(--accent);">entropy-regularized channel-attention work</a> is an initial investigation of that direction — the broader question stays independent of any single method, open to other architectural, uncertainty-aware, or representation-learning approaches as the research develops.</p>
+      <p data-i18n="research.p1">My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. A key outcome of that work: aggregate accuracy alone doesn't fully describe model behavior — a model can score well overall while performing very unevenly across individual classes.</p>
+      <p class="q" data-i18n="research.p2">Central PhD research question: how can deep learning models, particularly CNN-based architectures, be structured and designed to achieve more consistent performance across classes while maintaining trustworthy and reliable predictions, especially under limited-data conditions?</p>
+      <p data-i18n="research.p3">This has two main dimensions: class-wise performance consistency (reducing disparities in per-class accuracy rather than relying on aggregate metrics), and trustworthy predictive performance (confidence, uncertainty, calibration, robustness, and knowing when a model may be unreliable). I'm examining how architectural components and learned representations — attention mechanisms and feature representations in particular — can be structured to support both.</p>
+      <p data-i18n="research.p4">Information-theoretic methods aren't the starting point of this problem; they're one potential methodological direction for addressing it. The <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" style="color:var(--accent);">entropy-regularized channel-attention work</a> is an initial investigation of that direction — the broader question stays independent of any single method, open to other architectural, uncertainty-aware, or representation-learning approaches as the research develops.</p>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-    <p class="section-intro">Evidence over claims: engineering work from my graduation project, thesis, and current research.</p>
+    <h2 data-i18n="projects.h2">Projects</h2>
+    <p class="section-intro" data-i18n="projects.intro">Evidence over claims: engineering work from my graduation project, thesis, and current research.</p>
 
     <div class="project-card">
-      <img src="assets/smart-waste-bin-render.jpg" alt="Smart Waste Sorting Bin — full assembly render and bill of materials">
+      <img src="assets/smart-waste-bin-render.jpg" data-i18n-alt="projects.flagship.alt" alt="Smart Waste Sorting Bin — full assembly render and bill of materials">
       <div class="body">
-        <h3>Smart Waste Sorting Bin</h3>
-        <p>
+        <h3 data-i18n="projects.flagship.title">Smart Waste Sorting Bin</h3>
+        <p data-i18n="projects.flagship.desc">
           B.Sc. graduation project: sorts household waste into metal, glass, paper, and plastic
           using a sensor-fusion method — camera + ultrasonic + load cell — instead of an expensive
           material sensor. The design is manufacturing-ready: full SolidWorks CAD, a 34-part BOM,
           dimensioned technical drawings, tested hardware, and Arduino + Raspberry Pi code.
         </p>
-        <div class="tags"><span>SolidWorks</span><span>OpenCV</span><span>Arduino</span><span>Raspberry Pi</span><span>Sensor Fusion</span></div>
-        <a class="btn btn-primary btn-sm" href="https://github.com/mohammed9sh/smart-waste-sorting-bin">View on GitHub →</a>
+        <div class="tags"><span>SolidWorks</span><span>OpenCV</span><span>Arduino</span><span>Raspberry Pi</span><span data-i18n="tag.sensor_fusion">Sensor Fusion</span></div>
+        <a class="btn btn-primary btn-sm" href="https://github.com/mohammed9sh/smart-waste-sorting-bin" data-i18n="cta.github_view">View on GitHub →</a>
       </div>
     </div>
 
     <div class="mini-grid">
       <div class="mini-card">
-        <h3>Entropy-Regularized SE Channel Attention</h3>
-        <p>An initial investigation into information-theoretic (entropy-based) channel attention — one candidate mechanism for the class-consistency and trustworthiness question at the center of my PhD research, not the whole of it.</p>
-        <div class="tags"><span>PyTorch</span><span>Attention</span><span>PhD Research</span></div>
-        <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention">View on GitHub →</a>
+        <h3 data-i18n="projects.mini1.title">Entropy-Regularized SE Channel Attention</h3>
+        <p data-i18n="projects.mini1.desc">An initial investigation into information-theoretic (entropy-based) channel attention — one candidate mechanism for the class-consistency and trustworthiness question at the center of my PhD research, not the whole of it.</p>
+        <div class="tags"><span>PyTorch</span><span>Attention</span><span data-i18n="tag.phd_research">PhD Research</span></div>
+        <a href="https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention" data-i18n="cta.github_view">View on GitHub →</a>
       </div>
       <div class="mini-card">
-        <h3>WCE Capsule Image Classification</h3>
-        <p>M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, 95.75% accuracy via EfficientNet, augmentation, and ensembling. Published at AVRASYA 10th Int'l Conference on Applied Sciences.</p>
-        <div class="tags"><span>EfficientNet</span><span>Deep Learning</span><span>Published</span></div>
-        <a href="https://github.com/mohammed9sh/wce-image-classification-thesis">View on GitHub →</a>
+        <h3 data-i18n="projects.mini2.title">WCE Capsule Image Classification</h3>
+        <p data-i18n="projects.mini2.desc">M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, 95.75% accuracy via EfficientNet, augmentation, and ensembling. Published at AVRASYA 10th Int'l Conference on Applied Sciences.</p>
+        <div class="tags"><span>EfficientNet</span><span data-i18n="tag.deep_learning">Deep Learning</span><span data-i18n="tag.published">Published</span></div>
+        <a href="https://github.com/mohammed9sh/wce-image-classification-thesis" data-i18n="cta.github_view">View on GitHub →</a>
       </div>
       <div class="mini-card">
-        <h3>BCCD Blood Cell Detection</h3>
-        <p>A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets — HSV color segmentation, morphology, and watershed segmentation, no deep learning.</p>
-        <div class="tags"><span>MATLAB</span><span>Classical CV</span><span>Watershed</span></div>
-        <a href="https://github.com/mohammed9sh/bccd-blood-cell-detection">View on GitHub →</a>
+        <h3 data-i18n="projects.mini3.title">BCCD Blood Cell Detection</h3>
+        <p data-i18n="projects.mini3.desc">A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets — HSV color segmentation, morphology, and watershed segmentation, no deep learning.</p>
+        <div class="tags"><span>MATLAB</span><span data-i18n="tag.classical_cv">Classical CV</span><span>Watershed</span></div>
+        <a href="https://github.com/mohammed9sh/bccd-blood-cell-detection" data-i18n="cta.github_view">View on GitHub →</a>
       </div>
     </div>
   </section>
 
   <section id="background">
-    <h2>Background</h2>
-    <p class="section-intro">Competence measured through evidence, not certificates — projects, research, and things that shipped.</p>
+    <h2 data-i18n="background.h2">Background &amp; Study</h2>
+    <p class="section-intro" data-i18n="background.intro">Formal education, and how I keep building on it myself.</p>
     <div class="timeline">
       <div class="timeline-item">
-        <p class="when">Sep 2025 – Present</p>
-        <h3>Ph.D. in Mechatronics Engineering — Erciyes University</h3>
-        <p>Research focus: machine learning &amp; deep learning foundations, computer vision — theoretical grounding plus applied methods for visual data.</p>
+        <p class="when" data-i18n="background.t1.when">Sep 2025 – Present</p>
+        <h3 data-i18n="background.t1.title">Ph.D. in Mechatronics Engineering — Erciyes University</h3>
+        <p data-i18n="background.t1.desc">Research focus: machine learning &amp; deep learning foundations, computer vision — theoretical grounding plus applied methods for visual data.</p>
       </div>
       <div class="timeline-item">
-        <p class="when">Oct 2021 – Jul 2024</p>
-        <h3>M.Sc. in Mechatronics Engineering — Erciyes University</h3>
-        <p>Thesis: optimizing deep learning model performance for wireless capsule endoscopy image classification. Reached 95.75% classification accuracy via ensemble methods and hyperparameter tuning; published research on data augmentation for capsule-image classification with EfficientNet.</p>
+        <p class="when" data-i18n="background.t2.when">Oct 2021 – Jul 2024</p>
+        <h3 data-i18n="background.t2.title">M.Sc. in Mechatronics Engineering — Erciyes University</h3>
+        <p data-i18n="background.t2.desc">Thesis: optimizing deep learning model performance for wireless capsule endoscopy image classification. Reached 95.75% classification accuracy via ensemble methods and hyperparameter tuning; published research on data augmentation for capsule-image classification with EfficientNet.</p>
       </div>
       <div class="timeline-item">
-        <p class="when">Sep 2016 – Aug 2020</p>
-        <h3>B.Sc. in Mechatronics Engineering — Düzce University</h3>
-        <p>Graduation project: a smart waste-sorting bin combining Arduino/Raspberry Pi sensing with OpenCV-based image processing and SolidWorks-designed mechanics. GPA 3.17/4.00, top 10 in department.</p>
+        <p class="when" data-i18n="background.t3.when">Sep 2016 – Aug 2020</p>
+        <h3 data-i18n="background.t3.title">B.Sc. in Mechatronics Engineering — Düzce University</h3>
+        <p data-i18n="background.t3.desc">Graduation project: a smart waste-sorting bin combining Arduino/Raspberry Pi sensing with OpenCV-based image processing and SolidWorks-designed mechanics. GPA 3.17/4.00, top 10 in department.</p>
       </div>
     </div>
-  </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <p class="when">Aug 2022 – Nov 2025</p>
-        <h3>Robotics Trainer (Part-Time) — Khosrow Pasha Platform for Digital Education / MindUp Academy</h3>
-        <p>Taught robotics, Arduino programming, and engineering fundamentals. Developed curricula, training materials, and practical learning activities; delivered technical education remotely to students with different technical backgrounds.</p>
-      </div>
-      <div class="timeline-item">
-        <p class="when">May 2021 – May 2025</p>
-        <h3>Coordinator &amp; Export Specialist — Jazeera Company, Gaziantep</h3>
-        <p>Coordinated projects involving clients, suppliers, and project partners across Türkiye and the Middle East. Managed project communication, documentation, and progress reporting; supported technical equipment, infrastructure, and logistics projects.</p>
-      </div>
-      <div class="timeline-item">
-        <p class="when">Jul 2020 – Jan 2021</p>
-        <h3>3D Design &amp; Printing Trainee — SOFBIT Company, Gaziantep</h3>
-        <p>Contributed to feasibility research for personalized prosthetic solutions; assisted with engineering design and 3D-printing prototyping activities.</p>
-      </div>
-      <div class="timeline-item">
-        <p class="when">Aug 2019 – Sep 2019</p>
-        <h3>Automation System Intern — Merkon Otomasyon, Adana</h3>
-        <p>Participated in industrial automation projects alongside engineers and technicians.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="academy">
-    <h2>Engineering Academy</h2>
+    <h3 style="margin:36px 0 14px; font-size:1.05rem; color:var(--gray);" data-i18n="background.study_heading">Self-Directed Study</h3>
     <div class="academy-box">
       <div class="text">
-        <h3>A self-built study roadmap</h3>
-        <p>Built to work toward a long-term engineering identity and roadmap I've set for myself — most of it is still a work in progress. Shared as open source in case it's useful to anyone on a similar path.</p>
-        <p class="stats">8 sections · 94 units · 34 assignments · <a href="documents/Mohamed_Alshaikh_Engineering_Identity.pdf" style="color:var(--accent);">the roadmap, as a PDF ↓</a></p>
+        <h3 data-i18n="background.academy.title">A self-built study roadmap</h3>
+        <p data-i18n="background.academy.desc">Built to work toward a long-term engineering identity and roadmap I've set for myself — most of it is still a work in progress. Shared as open source in case it's useful to anyone on a similar path.</p>
+        <p class="stats" data-i18n="background.academy.stats">8 sections · 94 units · 34 assignments · <a href="documents/Mohamed_Alshaikh_Engineering_Identity.pdf" style="color:var(--accent);">the roadmap, as a PDF ↓</a></p>
       </div>
-      <a class="btn btn-secondary" href="https://mohammed9sh.github.io/academy/">Open the Academy →</a>
+      <a class="btn btn-secondary" href="https://mohammed9sh.github.io/academy/" data-i18n="background.academy.cta">Open the Academy →</a>
+    </div>
+    </section>
+
+  <section id="experience">
+    <h2 data-i18n="experience.h2">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="when" data-i18n="experience.e1.when">Aug 2022 – Nov 2025</p>
+        <h3 data-i18n="experience.e1.title">Robotics Trainer (Part-Time) — Khosrow Pasha Platform for Digital Education / MindUp Academy</h3>
+        <p data-i18n="experience.e1.desc">Taught robotics, Arduino programming, and engineering fundamentals. Developed curricula, training materials, and practical learning activities; delivered technical education remotely to students with different technical backgrounds.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when" data-i18n="experience.e2.when">May 2021 – May 2025</p>
+        <h3 data-i18n="experience.e2.title">Coordinator &amp; Export Specialist — Jazeera Company, Gaziantep</h3>
+        <p data-i18n="experience.e2.desc">Coordinated projects involving clients, suppliers, and project partners across Türkiye and the Middle East. Managed project communication, documentation, and progress reporting; supported technical equipment, infrastructure, and logistics projects.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="when" data-i18n="experience.e3.when">Jul 2020 – Jan 2021</p>
+        <h3 data-i18n="experience.e3.title">3D Design &amp; Printing Trainee — SOFBIT Company, Gaziantep</h3>
+        <p data-i18n="experience.e3.desc">Contributed to feasibility research for personalized prosthetic solutions; assisted with engineering design and 3D-printing prototyping activities.</p>
+      </div>
     </div>
   </section>
 
   <section id="skills">
-    <h2>Tools &amp; Skills</h2>
+    <h2 data-i18n="skills.h2">Tools &amp; Skills</h2>
     <div class="chips">
       <span class="chip">Python</span>
       <span class="chip">C++</span>
@@ -362,10 +336,10 @@
       <span class="chip">Arduino</span>
       <span class="chip">Raspberry Pi</span>
       <span class="chip">SolidWorks</span>
-      <span class="chip">Deep Learning</span>
-      <span class="chip">Computer Vision</span>
-      <span class="chip">Experimental Research</span>
-      <span class="chip">Technical Documentation</span>
+      <span class="chip" data-i18n="tag.deep_learning">Deep Learning</span>
+      <span class="chip" data-i18n="chip.computer_vision">Computer Vision</span>
+      <span class="chip" data-i18n="chip.experimental_research">Experimental Research</span>
+      <span class="chip" data-i18n="chip.technical_documentation">Technical Documentation</span>
     </div>
   </section>
 
@@ -373,18 +347,18 @@
 
 <div class="wrap">
   <section id="documents">
-    <h2>Documents</h2>
-    <p class="section-intro">CV and research profile, available as direct downloads.</p>
+    <h2 data-i18n="documents.h2">Documents</h2>
+    <p class="section-intro" data-i18n="documents.intro">CV and research profile, available as direct downloads.</p>
     <div class="mini-grid">
       <div class="mini-card">
-        <h3>CV</h3>
-        <p>Education, projects, technical skills, and professional experience.</p>
-        <a href="documents/Mohamed_Alshaikh_CV.pdf">Download PDF ↓</a>
+        <h3 data-i18n="documents.cv.title">CV</h3>
+        <p data-i18n="documents.cv.desc">Education, projects, technical skills, and professional experience.</p>
+        <a href="documents/Mohamed_Alshaikh_CV.pdf" data-i18n="documents.cta">Download PDF ↓</a>
       </div>
       <div class="mini-card">
-        <h3>Academic Research Profile</h3>
-        <p>M.Sc. → PhD research trajectory, the central research question, and the reasoning behind my current research direction.</p>
-        <a href="documents/Mohamed_Alshaikh_Research_Profile.pdf">Download PDF ↓</a>
+        <h3 data-i18n="documents.research.title">Academic Research Profile</h3>
+        <p data-i18n="documents.research.desc">M.Sc. → PhD research trajectory, the central research question, and the reasoning behind my current research direction.</p>
+        <a href="documents/Mohamed_Alshaikh_Research_Profile.pdf" data-i18n="documents.cta">Download PDF ↓</a>
       </div>
     </div>
   </section>
@@ -392,17 +366,312 @@
 
 <footer id="contact">
   <div class="wrap">
-    <p class="tagline">
+    <p class="tagline" data-i18n="footer.tagline">
       This site — and the projects behind it — follow the same practice: build in the
       open, document the reasoning, and let evidence speak instead of claims.
     </p>
     <div class="contact-row">
       <a href="mailto:mohammed.1998sh@gmail.com">mohammed.1998sh@gmail.com</a>
       <a href="https://github.com/mohammed9sh">github.com/mohammed9sh</a>
+      <a href="https://www.linkedin.com/in/mohammed-alshaikh-25077b1b2" data-i18n="footer.linkedin">LinkedIn</a>
     </div>
-    <p class="fine">Kayseri, Türkiye · Arabic (native) · English (C1) · Turkish (C1)</p>
+    <p class="fine" data-i18n="footer.fine">Kayseri, Türkiye · Arabic (native) · English (C1) · Turkish (C1)</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var I18N = {
+    en: {
+      "meta.title": "Mohamed Alshaikh — Applied AI & Robotics R&D",
+      "meta.description": "Mechatronics PhD student building intelligent physical systems with trustworthy AI — deep learning, computer vision, and robotics.",
+      "nav.brand": "Mohamed Alshaikh",
+      "nav.about": "About",
+      "nav.research": "Research",
+      "nav.projects": "Projects",
+      "nav.background": "Background",
+      "nav.experience": "Experience",
+      "nav.skills": "Skills",
+      "nav.documents": "Documents",
+      "nav.contact": "Contact",
+      "hero.eyebrow": "Applied AI &amp; Robotics R&amp;D",
+      "hero.h1": "Mohamed Alshaikh",
+      "hero.lead": "Mechatronics PhD student building intelligent systems that solve real-world engineering problems — combining AI, computer vision, robotics, and trustworthy machine learning.",
+      "hero.focus": "Focus areas: AI / ML / Deep Learning &middot; Computer Vision &middot; Robotics &amp; Physical Systems &middot; Math &amp; ML Foundations",
+      "hero.cta_projects": "View my projects ↓",
+      "hero.cta_email": "Email me",
+      "hero.cta_github": "GitHub",
+      "about.bio": "Mechatronics PhD student focused on deep learning and computer vision, with an engineering foundation in robotics, sensing, embedded platforms, and physical-system design. Experienced in developing and evaluating deep learning models for image classification, conducting experimental research, analyzing datasets, and communicating technical concepts. My academic background combines deep learning research with hands-on engineering projects involving computer vision, sensors, Arduino, Raspberry Pi, and mechanical design — with a particular interest in applications where intelligent computation interacts with real-world engineering systems.",
+      "research.h2": "Research Focus",
+      "research.intro": "The trajectory from my Master's work to my current PhD research.",
+      "research.p1": "My M.Sc. research focused on deep-learning-based classification of Wireless Capsule Endoscopy images — EfficientNet architectures, data augmentation, ensembling, and hyperparameter tuning, reaching 95.75% accuracy. A key outcome of that work: aggregate accuracy alone doesn't fully describe model behavior — a model can score well overall while performing very unevenly across individual classes.",
+      "research.p2": "Central PhD research question: how can deep learning models, particularly CNN-based architectures, be structured and designed to achieve more consistent performance across classes while maintaining trustworthy and reliable predictions, especially under limited-data conditions?",
+      "research.p3": "This has two main dimensions: class-wise performance consistency (reducing disparities in per-class accuracy rather than relying on aggregate metrics), and trustworthy predictive performance (confidence, uncertainty, calibration, robustness, and knowing when a model may be unreliable). I'm examining how architectural components and learned representations — attention mechanisms and feature representations in particular — can be structured to support both.",
+      "research.p4": "Information-theoretic methods aren't the starting point of this problem; they're one potential methodological direction for addressing it. The <a href=\"https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention\" style=\"color:var(--accent);\">entropy-regularized channel-attention work</a> is an initial investigation of that direction — the broader question stays independent of any single method, open to other architectural, uncertainty-aware, or representation-learning approaches as the research develops.",
+      "projects.h2": "Projects",
+      "projects.intro": "Evidence over claims: engineering work from my graduation project, thesis, and current research.",
+      "projects.flagship.alt": "Smart Waste Sorting Bin — full assembly render and bill of materials",
+      "projects.flagship.title": "Smart Waste Sorting Bin",
+      "projects.flagship.desc": "B.Sc. graduation project: sorts household waste into metal, glass, paper, and plastic using a sensor-fusion method — camera + ultrasonic + load cell — instead of an expensive material sensor. The design is manufacturing-ready: full SolidWorks CAD, a 34-part BOM, dimensioned technical drawings, tested hardware, and Arduino + Raspberry Pi code.",
+      "tag.sensor_fusion": "Sensor Fusion",
+      "tag.phd_research": "PhD Research",
+      "tag.deep_learning": "Deep Learning",
+      "tag.published": "Published",
+      "tag.classical_cv": "Classical CV",
+      "cta.github_view": "View on GitHub →",
+      "projects.mini1.title": "Entropy-Regularized SE Channel Attention",
+      "projects.mini1.desc": "An initial investigation into information-theoretic (entropy-based) channel attention — one candidate mechanism for the class-consistency and trustworthiness question at the center of my PhD research, not the whole of it.",
+      "projects.mini2.title": "WCE Capsule Image Classification",
+      "projects.mini2.desc": "M.Sc. thesis: deep learning classification of Wireless Capsule Endoscopy images, 95.75% accuracy via EfficientNet, augmentation, and ensembling. Published at AVRASYA 10th Int'l Conference on Applied Sciences.",
+      "projects.mini3.title": "BCCD Blood Cell Detection",
+      "projects.mini3.desc": "A classical computer-vision pipeline that detects and counts white blood cells, red blood cells, and platelets — HSV color segmentation, morphology, and watershed segmentation, no deep learning.",
+      "background.h2": "Background &amp; Study",
+      "background.intro": "Formal education, and how I keep building on it myself.",
+      "background.t1.when": "Sep 2025 – Present",
+      "background.t1.title": "Ph.D. in Mechatronics Engineering — Erciyes University",
+      "background.t1.desc": "Research focus: machine learning &amp; deep learning foundations, computer vision — theoretical grounding plus applied methods for visual data.",
+      "background.t2.when": "Oct 2021 – Jul 2024",
+      "background.t2.title": "M.Sc. in Mechatronics Engineering — Erciyes University",
+      "background.t2.desc": "Thesis: optimizing deep learning model performance for wireless capsule endoscopy image classification. Reached 95.75% classification accuracy via ensemble methods and hyperparameter tuning; published research on data augmentation for capsule-image classification with EfficientNet.",
+      "background.t3.when": "Sep 2016 – Aug 2020",
+      "background.t3.title": "B.Sc. in Mechatronics Engineering — Düzce University",
+      "background.t3.desc": "Graduation project: a smart waste-sorting bin combining Arduino/Raspberry Pi sensing with OpenCV-based image processing and SolidWorks-designed mechanics. GPA 3.17/4.00, top 10 in department.",
+      "background.study_heading": "Self-Directed Study",
+      "background.academy.title": "A self-built study roadmap",
+      "background.academy.desc": "Built to work toward a long-term engineering identity and roadmap I've set for myself — most of it is still a work in progress. Shared as open source in case it's useful to anyone on a similar path.",
+      "background.academy.stats": "8 sections · 94 units · 34 assignments · <a href=\"documents/Mohamed_Alshaikh_Engineering_Identity.pdf\" style=\"color:var(--accent);\">the roadmap, as a PDF ↓</a>",
+      "background.academy.cta": "Open the Academy →",
+      "experience.h2": "Experience",
+      "experience.e1.when": "Aug 2022 – Nov 2025",
+      "experience.e1.title": "Robotics Trainer (Part-Time) — Khosrow Pasha Platform for Digital Education / MindUp Academy",
+      "experience.e1.desc": "Taught robotics, Arduino programming, and engineering fundamentals. Developed curricula, training materials, and practical learning activities; delivered technical education remotely to students with different technical backgrounds.",
+      "experience.e2.when": "May 2021 – May 2025",
+      "experience.e2.title": "Coordinator &amp; Export Specialist — Jazeera Company, Gaziantep",
+      "experience.e2.desc": "Coordinated projects involving clients, suppliers, and project partners across Türkiye and the Middle East. Managed project communication, documentation, and progress reporting; supported technical equipment, infrastructure, and logistics projects.",
+      "experience.e3.when": "Jul 2020 – Jan 2021",
+      "experience.e3.title": "3D Design &amp; Printing Trainee — SOFBIT Company, Gaziantep",
+      "experience.e3.desc": "Contributed to feasibility research for personalized prosthetic solutions; assisted with engineering design and 3D-printing prototyping activities.",
+      "skills.h2": "Tools &amp; Skills",
+      "chip.computer_vision": "Computer Vision",
+      "chip.experimental_research": "Experimental Research",
+      "chip.technical_documentation": "Technical Documentation",
+      "documents.h2": "Documents",
+      "documents.intro": "CV and research profile, available as direct downloads.",
+      "documents.cv.title": "CV",
+      "documents.cv.desc": "Education, projects, technical skills, and professional experience.",
+      "documents.cta": "Download PDF ↓",
+      "documents.research.title": "Academic Research Profile",
+      "documents.research.desc": "M.Sc. → PhD research trajectory, the central research question, and the reasoning behind my current research direction.",
+      "footer.tagline": "This site — and the projects behind it — follow the same practice: build in the open, document the reasoning, and let evidence speak instead of claims.",
+      "footer.linkedin": "LinkedIn",
+      "footer.fine": "Kayseri, Türkiye · Arabic (native) · English (C1) · Turkish (C1)"
+    },
+    tr: {
+      "meta.title": "Mohamed Alshaikh — Uygulamalı Yapay Zekâ ve Robotik Ar-Ge",
+      "meta.description": "Güvenilir yapay zekâ ile akıllı fiziksel sistemler geliştiren Mekatronik doktora öğrencisi — derin öğrenme, bilgisayarlı görü ve robotik.",
+      "nav.brand": "Mohamed Alshaikh",
+      "nav.about": "Hakkımda",
+      "nav.research": "Araştırma",
+      "nav.projects": "Projeler",
+      "nav.background": "Geçmiş",
+      "nav.experience": "Deneyim",
+      "nav.skills": "Yetenekler",
+      "nav.documents": "Belgeler",
+      "nav.contact": "İletişim",
+      "hero.eyebrow": "Uygulamalı Yapay Zekâ ve Robotik Ar-Ge",
+      "hero.h1": "Mohamed Alshaikh",
+      "hero.lead": "Gerçek dünya mühendislik problemlerini çözen akıllı sistemler geliştiren Mekatronik doktora öğrencisiyim — yapay zekâ, bilgisayarlı görü, robotik ve güvenilir makine öğrenmesini bir araya getiriyorum.",
+      "hero.focus": "Odak alanları: Yapay Zekâ / Makine Öğrenmesi / Derin Öğrenme &middot; Bilgisayarlı Görü &middot; Robotik ve Fiziksel Sistemler &middot; Matematik ve ML Temelleri",
+      "hero.cta_projects": "Projelerimi görüntüle ↓",
+      "hero.cta_email": "Bana e-posta gönder",
+      "hero.cta_github": "GitHub",
+      "about.bio": "Derin öğrenme ve bilgisayarlı görü üzerine yoğunlaşan Mekatronik doktora öğrencisiyim; robotik, algılama, gömülü sistemler ve fiziksel sistem tasarımı konularında mühendislik altyapısına sahibim. Görüntü sınıflandırma için derin öğrenme modelleri geliştirme ve değerlendirme, deneysel araştırma yürütme, veri kümelerini analiz etme ve teknik kavramları aktarma konusunda deneyimliyim. Akademik geçmişim, derin öğrenme araştırmalarını bilgisayarlı görü, sensörler, Arduino, Raspberry Pi ve mekanik tasarımı içeren uygulamalı mühendislik projeleriyle birleştiriyor — özellikle akıllı hesaplamanın gerçek dünya mühendislik sistemleriyle etkileşime girdiği uygulamalara ilgi duyuyorum.",
+      "research.h2": "Araştırma Odağı",
+      "research.intro": "Yüksek lisans çalışmamdan mevcut doktora araştırmama uzanan yol.",
+      "research.p1": "Yüksek lisans araştırmam, Kablosuz Kapsül Endoskopisi görüntülerinin derin öğrenme tabanlı sınıflandırılmasına odaklandı — EfficientNet mimarileri, veri artırma, topluluk (ensemble) yöntemleri ve hiperparametre ayarı ile %95.75 doğruluğa ulaşıldı. Bu çalışmanın önemli bir çıkarımı: toplam doğruluk tek başına model davranışını tam olarak açıklamıyor — bir model genel olarak iyi puan alırken sınıflar arasında çok dengesiz performans gösterebiliyor.",
+      "research.p2": "Doktora araştırmasının merkezi sorusu: derin öğrenme modelleri, özellikle CNN tabanlı mimariler, sınırlı veri koşullarında bile sınıflar arasında daha tutarlı performans sağlarken güvenilir ve tutarlı tahminleri nasıl koruyacak şekilde yapılandırılabilir ve tasarlanabilir?",
+      "research.p3": "Bu sorunun iki temel boyutu var: sınıf bazında performans tutarlılığı (toplam metriklere güvenmek yerine sınıf başına doğruluktaki farkları azaltmak) ve güvenilir tahmin performansı (güven, belirsizlik, kalibrasyon, dayanıklılık ve bir modelin ne zaman güvenilmez olabileceğini bilme). Mimari bileşenlerin ve öğrenilen temsillerin — özellikle dikkat (attention) mekanizmalarının ve özellik temsillerinin — her ikisini de destekleyecek şekilde nasıl yapılandırılabileceğini inceliyorum.",
+      "research.p4": "Bilgi kuramına dayalı (information-theoretic) yöntemler bu problemin başlangıç noktası değil; ele almak için olası yöntemsel yönlerden biri. <a href=\"https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention\" style=\"color:var(--accent);\">Entropi düzenlemeli kanal dikkat (attention) çalışması</a>, bu yönde yapılan ilk incelemedir — daha geniş soru herhangi bir tek yönteme bağlı kalmaksızın, araştırma geliştikçe diğer mimari, belirsizlik farkındalıklı veya temsil öğrenme yaklaşımlarına açık kalıyor.",
+      "projects.h2": "Projeler",
+      "projects.intro": "İddialar yerine kanıt: bitirme projemden, tezimden ve mevcut araştırmamdan mühendislik çalışmaları.",
+      "projects.flagship.alt": "Akıllı Atık Ayırma Kutusu — tam montaj görseli ve malzeme listesi",
+      "projects.flagship.title": "Akıllı Atık Ayırma Kutusu",
+      "projects.flagship.desc": "Lisans bitirme projesi: pahalı bir malzeme sensörü yerine kamera + ultrasonik + yük hücresi kullanan bir sensör füzyonu yöntemiyle ev atıklarını metal, cam, kağıt ve plastik olarak ayırıyor. Tasarım üretime hazır: eksiksiz SolidWorks CAD modeli, 34 parçalık malzeme listesi (BOM), ölçülendirilmiş teknik çizimler, test edilmiş donanım ve Arduino + Raspberry Pi kodu.",
+      "tag.sensor_fusion": "Sensör Füzyonu",
+      "tag.phd_research": "Doktora Araştırması",
+      "tag.deep_learning": "Derin Öğrenme",
+      "tag.published": "Yayımlandı",
+      "tag.classical_cv": "Klasik Bilgisayarlı Görü",
+      "cta.github_view": "GitHub'da görüntüle →",
+      "projects.mini1.title": "Entropi Düzenlemeli SE Kanal Dikkat Mekanizması",
+      "projects.mini1.desc": "Bilgi kuramına dayalı (entropi tabanlı) kanal dikkat mekanizmasına yönelik ilk inceleme — doktora araştırmamın merkezindeki sınıf tutarlılığı ve güvenilirlik sorusu için aday mekanizmalardan biri, sorunun tamamı değil.",
+      "projects.mini2.title": "WCE Kapsül Görüntü Sınıflandırması",
+      "projects.mini2.desc": "Yüksek lisans tezi: Kablosuz Kapsül Endoskopisi görüntülerinin derin öğrenme ile sınıflandırılması; EfficientNet, veri artırma ve topluluk yöntemleriyle %95.75 doğruluk. AVRASYA 10. Uluslararası Uygulamalı Bilimler Konferansı'nda yayımlandı.",
+      "projects.mini3.title": "BCCD Kan Hücresi Tespiti",
+      "projects.mini3.desc": "Beyaz kan hücrelerini, kırmızı kan hücrelerini ve trombositleri tespit edip sayan klasik bir bilgisayarlı görü işlem hattı — HSV renk segmentasyonu, morfolojik işlemler ve watershed segmentasyonu; derin öğrenme kullanılmıyor.",
+      "background.h2": "Geçmiş ve Kişisel Çalışma",
+      "background.intro": "Resmi eğitimim ve bunu kendi kendime nasıl geliştirmeye devam ettiğim.",
+      "background.t1.when": "Eyl 2025 – Devam ediyor",
+      "background.t1.title": "Mekatronik Mühendisliği Doktorası — Erciyes Üniversitesi",
+      "background.t1.desc": "Araştırma odağı: makine öğrenmesi ve derin öğrenme temelleri, bilgisayarlı görü — kuramsal temel ile görsel veriler için uygulamalı yöntemler.",
+      "background.t2.when": "Eki 2021 – Tem 2024",
+      "background.t2.title": "Mekatronik Mühendisliği Yüksek Lisansı — Erciyes Üniversitesi",
+      "background.t2.desc": "Tez: kablosuz kapsül endoskopisi görüntü sınıflandırması için derin öğrenme modeli performansının optimize edilmesi. Topluluk yöntemleri ve hiperparametre ayarıyla %95.75 sınıflandırma doğruluğuna ulaşıldı; EfficientNet ile kapsül görüntü sınıflandırması için veri artırma üzerine araştırma yayımlandı.",
+      "background.t3.when": "Eyl 2016 – Ağu 2020",
+      "background.t3.title": "Mekatronik Mühendisliği Lisansı — Düzce Üniversitesi",
+      "background.t3.desc": "Bitirme projesi: Arduino/Raspberry Pi tabanlı algılamayı OpenCV ile görüntü işleme ve SolidWorks ile tasarlanmış mekanikle birleştiren akıllı bir atık ayırma kutusu. Not ortalaması 3.17/4.00, bölümde ilk 10.",
+      "background.study_heading": "Kişisel Çalışma",
+      "background.academy.title": "Kendi oluşturduğum bir çalışma yol haritası",
+      "background.academy.desc": "Kendim için belirlediğim uzun vadeli mühendislik kimliği ve yol haritasına doğru ilerlemek için oluşturuldu — büyük kısmı hâlâ devam eden bir çalışma. Benzer bir yolda olan birine faydalı olabilir diye açık kaynak olarak paylaşıyorum.",
+      "background.academy.stats": "8 bölüm · 94 ünite · 34 ödev · <a href=\"documents/Mohamed_Alshaikh_Engineering_Identity.pdf\" style=\"color:var(--accent);\">yol haritası, PDF olarak ↓</a>",
+      "background.academy.cta": "Akademiyi Aç →",
+      "experience.h2": "Deneyim",
+      "experience.e1.when": "Ağu 2022 – Kas 2025",
+      "experience.e1.title": "Robotik Eğitmeni (Yarı Zamanlı) — Khosrow Pasha Dijital Eğitim Platformu / MindUp Academy",
+      "experience.e1.desc": "Robotik, Arduino programlama ve mühendislik temelleri dersleri verdim. Müfredat, eğitim materyalleri ve uygulamalı öğrenme etkinlikleri geliştirdim; farklı teknik geçmişlere sahip öğrencilere uzaktan teknik eğitim sundum.",
+      "experience.e2.when": "May 2021 – May 2025",
+      "experience.e2.title": "Koordinatör ve İhracat Uzmanı — Jazeera Company, Gaziantep",
+      "experience.e2.desc": "Türkiye ve Orta Doğu genelinde müşterileri, tedarikçileri ve proje ortaklarını kapsayan projeleri koordine ettim. Proje iletişimini, dokümantasyonu ve ilerleme raporlamasını yönettim; teknik ekipman, altyapı ve lojistik projelerine destek verdim.",
+      "experience.e3.when": "Tem 2020 – Oca 2021",
+      "experience.e3.title": "3D Tasarım ve Baskı Stajyeri — SOFBIT Company, Gaziantep",
+      "experience.e3.desc": "Kişiselleştirilmiş protez çözümleri için fizibilite araştırmasına katkı sağladım; mühendislik tasarımı ve 3D baskı prototipleme çalışmalarına destek verdim.",
+      "skills.h2": "Araçlar ve Yetenekler",
+      "chip.computer_vision": "Bilgisayarlı Görü",
+      "chip.experimental_research": "Deneysel Araştırma",
+      "chip.technical_documentation": "Teknik Dokümantasyon",
+      "documents.h2": "Belgeler",
+      "documents.intro": "Özgeçmiş ve araştırma profili, doğrudan indirilebilir.",
+      "documents.cv.title": "Özgeçmiş",
+      "documents.cv.desc": "Eğitim, projeler, teknik yetenekler ve profesyonel deneyim.",
+      "documents.cta": "PDF indir ↓",
+      "documents.research.title": "Akademik Araştırma Profili",
+      "documents.research.desc": "Yüksek lisanstan doktoraya araştırma yolculuğu, merkezi araştırma sorusu ve mevcut araştırma yönümün arkasındaki mantık.",
+      "footer.tagline": "Bu site — ve arkasındaki projeler — aynı ilkeyi izliyor: açık şekilde inşa etmek, gerekçeleri belgelemek ve iddialar yerine kanıtın konuşmasına izin vermek.",
+      "footer.linkedin": "LinkedIn",
+      "footer.fine": "Kayseri, Türkiye · Arapça (anadil) · İngilizce (C1) · Türkçe (C1)"
+    },
+    ar: {
+      "meta.title": "محمد الشيخ — الذكاء الاصطناعي التطبيقي وهندسة الروبوتات",
+      "meta.description": "طالب دكتوراه في الميكاترونكس يبني أنظمة فيزيائية ذكية باستخدام الذكاء الاصطناعي الموثوق — التعلم العميق، رؤية الحاسوب، والروبوتات.",
+      "nav.brand": "محمد الشيخ",
+      "nav.about": "نبذة",
+      "nav.research": "البحث",
+      "nav.projects": "المشاريع",
+      "nav.background": "الخلفية",
+      "nav.experience": "الخبرة",
+      "nav.skills": "المهارات",
+      "nav.documents": "المستندات",
+      "nav.contact": "التواصل",
+      "hero.eyebrow": "الذكاء الاصطناعي التطبيقي وهندسة الروبوتات",
+      "hero.h1": "محمد الشيخ",
+      "hero.lead": "طالب دكتوراه في هندسة الميكاترونكس أبني أنظمة ذكية تحل مشكلات هندسية حقيقية — أجمع بين الذكاء الاصطناعي، رؤية الحاسوب، الروبوتات، وتعلّم الآلة الموثوق.",
+      "hero.focus": "مجالات التركيز: الذكاء الاصطناعي / تعلّم الآلة / التعلّم العميق &middot; رؤية الحاسوب &middot; الروبوتات والأنظمة الفيزيائية &middot; أساسيات الرياضيات وتعلّم الآلة",
+      "hero.cta_projects": "عرض مشاريعي ↓",
+      "hero.cta_email": "راسلني عبر البريد",
+      "hero.cta_github": "GitHub",
+      "about.bio": "طالب دكتوراه في هندسة الميكاترونكس أركّز على التعلّم العميق ورؤية الحاسوب، ولديّ خلفية هندسية في الروبوتات، الاستشعار، الأنظمة المدمجة، وتصميم الأنظمة الفيزيائية. لديّ خبرة في تطوير وتقييم نماذج التعلّم العميق لتصنيف الصور، وإجراء البحث التجريبي، وتحليل مجموعات البيانات، وتوصيل المفاهيم التقنية. تجمع خلفيتي الأكاديمية بين أبحاث التعلّم العميق والمشاريع الهندسية العملية التي تشمل رؤية الحاسوب، أجهزة الاستشعار، Arduino، Raspberry Pi، والتصميم الميكانيكي — مع اهتمام خاص بالتطبيقات التي تتفاعل فيها الحوسبة الذكية مع الأنظمة الهندسية الواقعية.",
+      "research.h2": "التركيز البحثي",
+      "research.intro": "المسار من عملي في الماجستير إلى بحثي الحالي في الدكتوراه.",
+      "research.p1": "ركّز بحثي في الماجستير على التصنيف القائم على التعلّم العميق لصور تنظير الكبسولة اللاسلكية — باستخدام بنى EfficientNet، وزيادة البيانات، وأساليب التجميع (ensembling)، وضبط المعاملات الفائقة، ليصل إلى دقة 95.75%. ومن أهم نتائج ذلك العمل: أن الدقة الإجمالية وحدها لا تصف سلوك النموذج بشكل كامل — فقد يحقق النموذج نتيجة جيدة إجمالاً بينما يكون أداؤه متفاوتًا جدًا بين الفئات الفردية.",
+      "research.p2": "سؤال البحث المحوري في الدكتوراه: كيف يمكن هيكلة وتصميم نماذج التعلّم العميق، وخاصة البنى القائمة على الشبكات العصبية الالتفافية (CNN)، لتحقيق أداء أكثر اتساقًا عبر الفئات مع الحفاظ على تنبؤات موثوقة ومتماسكة، خاصة في ظل محدودية البيانات؟",
+      "research.p3": "لهذا السؤال بُعدان رئيسيان: اتساق الأداء على مستوى الفئة (تقليل التفاوت في الدقة لكل فئة بدلاً من الاعتماد على المقاييس الإجمالية)، والأداء التنبؤي الموثوق (الثقة، عدم اليقين، المعايرة، المتانة، ومعرفة متى قد يكون النموذج غير موثوق). أدرس كيف يمكن هيكلة المكوّنات المعمارية والتمثيلات المتعلَّمة — وبخاصة آليات الانتباه (attention) وتمثيلات السمات — لدعم كلا البعدين.",
+      "research.p4": "الأساليب القائمة على نظرية المعلومات ليست نقطة الانطلاق لهذه المشكلة؛ بل هي أحد الاتجاهات المنهجية المحتملة لمعالجتها. يمثّل <a href=\"https://github.com/mohammed9sh/Entropy-Regularized-SE-Channel-Attention\" style=\"color:var(--accent);\">عمل الانتباه القناة المنظَّم بالإنتروبيا</a> تحقيقًا أوليًا في هذا الاتجاه — ويبقى السؤال الأوسع مستقلاً عن أي منهج واحد، ومنفتحًا على مناهج معمارية أخرى، أو واعية بعدم اليقين، أو قائمة على تعلّم التمثيل، مع تطور البحث.",
+      "projects.h2": "المشاريع",
+      "projects.intro": "الدليل قبل الادعاء: أعمال هندسية من مشروع تخرجي، وأطروحتي، وبحثي الحالي.",
+      "projects.flagship.alt": "صندوق فرز النفايات الذكي — عرض كامل للتجميع وقائمة المكونات",
+      "projects.flagship.title": "صندوق فرز النفايات الذكي",
+      "projects.flagship.desc": "مشروع تخرج البكالوريوس: يفرز النفايات المنزلية إلى معدن وزجاج وورق وبلاستيك باستخدام أسلوب دمج الحساسات — كاميرا + حساس بالموجات فوق الصوتية + خلية حمل — بدلاً من حساس مواد باهظ الثمن. التصميم جاهز للتصنيع: نموذج CAD كامل بواسطة SolidWorks، قائمة مكونات (BOM) من 34 قطعة، مخططات تقنية مُبعدة، عتاد مُختبر، وكود Arduino و Raspberry Pi.",
+      "tag.sensor_fusion": "دمج الحساسات",
+      "tag.phd_research": "بحث دكتوراه",
+      "tag.deep_learning": "التعلّم العميق",
+      "tag.published": "منشور",
+      "tag.classical_cv": "رؤية حاسوب كلاسيكية",
+      "cta.github_view": "عرض على GitHub ←",
+      "projects.mini1.title": "انتباه القناة SE المنظَّم بالإنتروبيا",
+      "projects.mini1.desc": "تحقيق أولي في آلية انتباه القناة القائمة على نظرية المعلومات (المبنية على الإنتروبيا) — وهي إحدى الآليات المرشحة لسؤال اتساق الفئات والموثوقية الذي يقع في صميم بحثي للدكتوراه، وليست كل السؤال.",
+      "projects.mini2.title": "تصنيف صور كبسولة WCE",
+      "projects.mini2.desc": "أطروحة الماجستير: تصنيف صور تنظير الكبسولة اللاسلكية بالتعلّم العميق، بدقة 95.75% باستخدام EfficientNet وزيادة البيانات وأساليب التجميع. نُشرت في مؤتمر AVRASYA الدولي العاشر للعلوم التطبيقية.",
+      "projects.mini3.title": "كشف خلايا الدم BCCD",
+      "projects.mini3.desc": "خط معالجة كلاسيكي في رؤية الحاسوب يكتشف ويعدّ خلايا الدم البيضاء والحمراء والصفائح الدموية — باستخدام تجزئة الألوان HSV، والعمليات المورفولوجية، وتجزئة Watershed، دون استخدام التعلّم العميق.",
+      "background.h2": "الخلفية والدراسة الذاتية",
+      "background.intro": "التعليم الرسمي، وكيف أستمر في البناء عليه بنفسي.",
+      "background.t1.when": "سبتمبر 2025 – حتى الآن",
+      "background.t1.title": "دكتوراه في هندسة الميكاترونكس — جامعة أرجييس",
+      "background.t1.desc": "التركيز البحثي: أساسيات تعلّم الآلة والتعلّم العميق، ورؤية الحاسوب — أساس نظري إلى جانب أساليب تطبيقية للبيانات المرئية.",
+      "background.t2.when": "أكتوبر 2021 – يوليو 2024",
+      "background.t2.title": "ماجستير في هندسة الميكاترونكس — جامعة أرجييس",
+      "background.t2.desc": "الأطروحة: تحسين أداء نموذج التعلّم العميق لتصنيف صور تنظير الكبسولة اللاسلكية. تحقيق دقة تصنيف 95.75% باستخدام أساليب التجميع وضبط المعاملات الفائقة؛ ونُشر بحث حول زيادة البيانات لتصنيف صور الكبسولة باستخدام EfficientNet.",
+      "background.t3.when": "سبتمبر 2016 – أغسطس 2020",
+      "background.t3.title": "بكالوريوس في هندسة الميكاترونكس — جامعة دوزجة",
+      "background.t3.desc": "مشروع التخرج: صندوق فرز نفايات ذكي يجمع بين الاستشعار عبر Arduino/Raspberry Pi ومعالجة الصور باستخدام OpenCV وميكانيكا مصممة بواسطة SolidWorks. المعدل التراكمي 3.17/4.00، ضمن أفضل 10 طلاب في القسم.",
+      "background.study_heading": "الدراسة الذاتية",
+      "background.academy.title": "خارطة طريق دراسية بنيتها بنفسي",
+      "background.academy.desc": "بُنيت للعمل نحو هوية هندسية طويلة المدى وخارطة طريق حددتها لنفسي — ولا يزال معظمها قيد التطوير. أشاركها كمصدر مفتوح لعلّها تفيد أي شخص يسير في طريق مشابه.",
+      "background.academy.stats": "8 أقسام · 94 وحدة · 34 مهمة · <a href=\"documents/Mohamed_Alshaikh_Engineering_Identity.pdf\" style=\"color:var(--accent);\">خارطة الطريق، كملف PDF ↓</a>",
+      "background.academy.cta": "افتح الأكاديمية ←",
+      "experience.h2": "الخبرة",
+      "experience.e1.when": "أغسطس 2022 – نوفمبر 2025",
+      "experience.e1.title": "مدرّب روبوتات (بدوام جزئي) — منصة خسرو باشا للتعليم الرقمي / MindUp Academy",
+      "experience.e1.desc": "درّست الروبوتات، وبرمجة Arduino، وأساسيات الهندسة. طوّرت مناهج ومواد تدريبية وأنشطة تعلّم عملية؛ وقدّمت تعليمًا تقنيًا عن بُعد لطلاب من خلفيات تقنية مختلفة.",
+      "experience.e2.when": "مايو 2021 – مايو 2025",
+      "experience.e2.title": "منسّق وأخصائي تصدير — شركة الجزيرة، غازي عنتاب",
+      "experience.e2.desc": "نسّقت مشاريع شملت عملاء وموردين وشركاء مشاريع عبر تركيا والشرق الأوسط. أدرت التواصل الخاص بالمشاريع، والتوثيق، وتقارير سير العمل؛ ودعمت مشاريع المعدات التقنية والبنية التحتية واللوجستيات.",
+      "experience.e3.when": "يوليو 2020 – يناير 2021",
+      "experience.e3.title": "متدرب تصميم وطباعة ثلاثية الأبعاد — شركة SOFBIT، غازي عنتاب",
+      "experience.e3.desc": "ساهمت في أبحاث الجدوى لحلول الأطراف الاصطناعية المخصّصة؛ وساعدت في أنشطة التصميم الهندسي وتصنيع النماذج الأولية بالطباعة ثلاثية الأبعاد.",
+      "skills.h2": "الأدوات والمهارات",
+      "chip.computer_vision": "رؤية الحاسوب",
+      "chip.experimental_research": "البحث التجريبي",
+      "chip.technical_documentation": "التوثيق التقني",
+      "documents.h2": "المستندات",
+      "documents.intro": "السيرة الذاتية والملف البحثي، متاحان للتنزيل المباشر.",
+      "documents.cv.title": "السيرة الذاتية",
+      "documents.cv.desc": "التعليم، المشاريع، المهارات التقنية، والخبرة المهنية.",
+      "documents.cta": "تنزيل PDF ↓",
+      "documents.research.title": "الملف البحثي الأكاديمي",
+      "documents.research.desc": "المسار البحثي من الماجستير إلى الدكتوراه، والسؤال البحثي المحوري، والمنطق وراء اتجاهي البحثي الحالي.",
+      "footer.tagline": "يتبع هذا الموقع — والمشاريع التي خلفه — الممارسة نفسها: البناء بشكل علني، وتوثيق المنطق وراء القرارات، وترك الدليل يتحدث بدلاً من الادعاءات.",
+      "footer.linkedin": "LinkedIn",
+      "footer.fine": "قيصري، تركيا · العربية (اللغة الأم) · الإنجليزية (C1) · التركية (C1)"
+    }
+  };
+
+  function applyLanguage(lang){
+    var dict = I18N[lang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-alt');
+      if(dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+    });
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    if(dict['meta.title']) document.title = dict['meta.title'];
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc && dict['meta.description']) metaDesc.setAttribute('content', dict['meta.description']);
+    document.querySelectorAll('.lang-switch button').forEach(function(b){
+      var isActive = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('active', isActive);
+    });
+    try{ localStorage.setItem('site-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      applyLanguage(btn.getAttribute('data-lang'));
+    });
+  });
+
+  var initial = 'en';
+  try{
+    var saved = localStorage.getItem('site-lang');
+    if(saved && I18N[saved]) initial = saved;
+  }catch(e){}
+  applyLanguage(initial);
+})();
+</script>
 
 </body>
 </html>
